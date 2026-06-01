@@ -1,0 +1,35 @@
+column,dtype,null_count,null_pct,unique_count
+Account,str,0,0.0,32
+Coin,str,0,0.0,227
+Execution Price,float64,0,0.0,60052
+Size Tokens,float64,0,0.0,59169
+Size USD,float64,0,0.0,118482
+Side,str,0,0.0,2
+Timestamp IST,str,0,0.0,27916
+Start Position,float64,0,0.0,196788
+Direction,str,0,0.0,11
+Closed PnL,float64,0,0.0,90720
+Transaction Hash,str,0,0.0,101180
+Order ID,int64,0,0.0,50425
+Crossed,bool,0,0.0,2
+Fee,float64,0,0.0,138802
+Trade ID,float64,0,0.0,2810
+Timestamp,float64,0,0.0,7
+timestamp_ist,datetime64[us],0,0.0,27916
+timestamp_utc,datetime64[us],0,0.0,27916
+date_utc,str,0,0.0,472
+date,str,0,0.0,472
+fg_timestamp,int64,0,0.0,472
+fg_value,int64,0,0.0,73
+fg_classification,str,0,0.0,5
+Closed PnL_w,float64,0,0.0,86678
+Size USD_w,float64,0,0.0,115827
+Fee_w,float64,0,0.0,135048
+y,int64,0,0.0,2
+size_usd_log,float64,0,0.0,118482
+fee_abs_log,float64,0,0.0,137888
+exec_price_log,float64,0,0.0,60052
+sent_regime_ord,int64,0,0.0,5
+hour,int32,0,0.0,24
+dow,int32,0,0.0,7
+month,int32,0,0.0,12

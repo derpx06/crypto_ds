@@ -1,0 +1,42 @@
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# IDE and System Files
+.vscode/
+.idea/
+.DS_Store
+.agents/
+.codex/
+.gemini/
+
+# Large Model Binaries
+model_artifacts/*.joblib
+
+# Large Data & Processed Files (>50MB)
+data/historical_data.csv
+data/historical_with_features.csv
+data/historical_with_sentiment_clean.csv
+data/holdout_data.csv
+data/final_holdout_oof.csv
+
+csv_files/final_champion_oof.csv
+csv_files/final_holdout_oof.csv
+csv_files/historical_with_sentiment_clean.csv
+csv_files/model_blend_oof.csv
+csv_files/model_oof_predictions.csv
+csv_files/model_oof_predictions_improved.csv
+csv_files/model_oof_guarded.csv
+
+# Large Archives
+submission_bundle.zip

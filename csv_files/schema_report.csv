@@ -1,0 +1,21 @@
+dataset,column,dtype,null_count,null_pct,n_unique
+historical_data,Account,object,0,0.0,32
+historical_data,Coin,object,0,0.0,246
+historical_data,Execution Price,float64,0,0.0,60162
+historical_data,Size Tokens,float64,0,0.0,59304
+historical_data,Size USD,float64,0,0.0,118493
+historical_data,Side,object,0,0.0,2
+historical_data,Timestamp IST,object,0,0.0,27977
+historical_data,Start Position,float64,0,0.0,196923
+historical_data,Direction,object,0,0.0,12
+historical_data,Closed PnL,float64,0,0.0,90720
+historical_data,Transaction Hash,object,0,0.0,101184
+historical_data,Order ID,int64,0,0.0,50555
+historical_data,Crossed,bool,0,0.0,2
+historical_data,Fee,float64,0,0.0,138802
+historical_data,Trade ID,float64,0,0.0,2810
+historical_data,Timestamp,float64,0,0.0,7
+fear_greed_index,timestamp,int64,0,0.0,2644
+fear_greed_index,value,int64,0,0.0,90
+fear_greed_index,classification,object,0,0.0,5
+fear_greed_index,date,object,0,0.0,2644

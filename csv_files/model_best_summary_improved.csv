@@ -1,0 +1,2 @@
+model,mean_roc_auc,mean_pr_auc,mean_f1@0.5,best_threshold,best_alpha,taken_trades,total_pnl,max_drawdown
+hgb_regime_expert_nested,0.9886484122701299,0.9810645331193288,0.935115854135202,0.38,1.0,76243,8146843.952624101,-125832.8642567182

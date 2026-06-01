@@ -1,0 +1,87 @@
+feature,category,description
+size_usd_log,Microstructure & Context,Derived time feature or logarithmic base trade features.
+fee_abs_log,Microstructure & Context,Derived time feature or logarithmic base trade features.
+exec_price_log,Microstructure & Context,Derived time feature or logarithmic base trade features.
+sent_regime_ord,Cross-Feature Interactions,Interaction cross-products (e.g. sentiment value multiplied by trader skill).
+hour,Microstructure & Context,Derived time feature or logarithmic base trade features.
+dow,Microstructure & Context,Derived time feature or logarithmic base trade features.
+month,Microstructure & Context,Derived time feature or logarithmic base trade features.
+acc_wr5,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_wr10,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_wr20,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_wr50,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_wr100,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_pnl_mean_10,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_pnl_std_10,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_pnl_max_10,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_pnl_min_10,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_pnl_velocity_10,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_pnl_mean_20,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_pnl_std_20,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_pnl_max_20,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_pnl_min_20,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_pnl_velocity_20,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_pnl_mean_50,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_pnl_std_50,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_pnl_max_50,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_pnl_min_50,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_pnl_velocity_50,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+crossed_int,Microstructure & Context,Derived time feature or logarithmic base trade features.
+acc_size_mean_10,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_size_std_10,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_fee_mean_10,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_taker_rate_10,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_size_mean_20,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_size_std_20,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_fee_mean_20,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_taker_rate_20,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_size_mean_50,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_size_std_50,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_fee_mean_50,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_taker_rate_50,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+acc_streak,Account Rolling Metrics,Rolling window metric computed on historical account data with a shift(1) lag.
+coin_wr10,Coin Rolling Metrics,Rolling window metric computed on historical coin performance data with a shift(1) lag.
+coin_pnl10,Coin Rolling Metrics,Rolling window metric computed on historical coin performance data with a shift(1) lag.
+coin_taker_rate_10,Coin Rolling Metrics,Rolling window metric computed on historical coin performance data with a shift(1) lag.
+coin_wr30,Coin Rolling Metrics,Rolling window metric computed on historical coin performance data with a shift(1) lag.
+coin_pnl30,Coin Rolling Metrics,Rolling window metric computed on historical coin performance data with a shift(1) lag.
+coin_taker_rate_30,Coin Rolling Metrics,Rolling window metric computed on historical coin performance data with a shift(1) lag.
+coin_wr60,Coin Rolling Metrics,Rolling window metric computed on historical coin performance data with a shift(1) lag.
+coin_pnl60,Coin Rolling Metrics,Rolling window metric computed on historical coin performance data with a shift(1) lag.
+coin_taker_rate_60,Coin Rolling Metrics,Rolling window metric computed on historical coin performance data with a shift(1) lag.
+fg_l1,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_regime_l1,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_l2,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_regime_l2,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_l3,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_regime_l3,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_l5,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_regime_l5,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_l7,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_regime_l7,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_l10,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_regime_l10,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_l14,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_regime_l14,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_l21,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_regime_l21,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_l30,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_regime_l30,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_d1,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_d3,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_d7,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_d14,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_r7m,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_r7s,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_r14m,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_r14s,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_r30m,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+fg_r30s,Sentiment Dynamics,"Lagged values, moving averages, or changes in the Fear & Greed index."
+is_buy,Microstructure & Context,Derived time feature or logarithmic base trade features.
+is_sell,Microstructure & Context,Derived time feature or logarithmic base trade features.
+sent_x_taker,Cross-Feature Interactions,Interaction cross-products (e.g. sentiment value multiplied by trader skill).
+sent_x_accwr,Cross-Feature Interactions,Interaction cross-products (e.g. sentiment value multiplied by trader skill).
+sent_x_accsize,Cross-Feature Interactions,Interaction cross-products (e.g. sentiment value multiplied by trader skill).
+sent_x_coinwr,Cross-Feature Interactions,Interaction cross-products (e.g. sentiment value multiplied by trader skill).
+size_x_sent,Cross-Feature Interactions,Interaction cross-products (e.g. sentiment value multiplied by trader skill).
+fee_x_taker,Cross-Feature Interactions,Interaction cross-products (e.g. sentiment value multiplied by trader skill).

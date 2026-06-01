@@ -1,0 +1,2 @@
+model,best_threshold,best_alpha,best_gate,holdout_rows,taken_trades,total_pnl,max_drawdown,hit_rate,profit_factor,holdout_roc_auc,holdout_pr_auc,holdout_brier
+final_holdout_calibrated_ensemble,0.52,0.75,0.05,31662,11633,1034275.8101088639,-1825.8015403627069,0.9600275079515173,66.59804757745184,0.9940029287849408,0.9766596416080912,0.01780668641195448

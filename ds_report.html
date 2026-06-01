@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>DS Report</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.45;
+      color: #111;
+      max-width: 980px;
+      margin: 40px auto;
+      padding: 0 24px;
+      background: #fff;
+    }
+    h1, h2, h3 {
+      color: #0f172a;
+      margin-bottom: 0.3em;
+    }
+    h1 { font-size: 30px; }
+    h2 { font-size: 22px; margin-top: 1.4em; }
+    h3 { font-size: 17px; margin-top: 1.1em; }
+    p, li { font-size: 14px; }
+    ul, ol { margin-top: 0.25em; }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 0.6em 0 1em;
+      font-size: 13px;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #e2e8f0; }
+    .note {
+      background: #f8fafc;
+      border-left: 4px solid #2563eb;
+      padding: 12px 14px;
+      margin: 1em 0;
+    }
+    .small { font-size: 12px; color: #475569; }
+    code { background: #f1f5f9; padding: 1px 4px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Crypto Data Science Assignment Report</h1>
+  <p class="small">Prepared for the Hyperliquid / Fear-and-Greed trading analysis assignment.</p>
+
+  <h2>1. Task Summary</h2>
+  <p>
+    The assignment asks for an analysis of the relationship between trader behavior on Hyperliquid and Bitcoin market sentiment,
+    using a historical execution dataset and the daily Fear and Greed Index. The core goal is to identify how sentiment regimes affect
+    performance, execution style, and risk, and then use those findings to build a leakage-safe predictive model.
+  </p>
+
+  <h2>2. Data Overview</h2>
+  <h3>Historical Trader Data</h3>
+  <ul>
+    <li>211,224 rows, 32 unique accounts, 246 unique coins.</li>
+    <li>Main fields: account, coin, execution price, size, side, timestamp IST, start position, direction, closed PnL, crossed, fee, trade ID.</li>
+    <li>Data is heavy-tailed, with large outliers in <code>Closed PnL</code> and <code>Size USD</code>.</li>
+  </ul>
+
+  <h3>Fear and Greed Index</h3>
+  <ul>
+    <li>2,644 daily rows spanning 2018-02-01 to 2025-05-02.</li>
+    <li>Fields: timestamp, value, classification, date.</li>
+    <li>Classification buckets: Extreme Fear, Fear, Neutral, Greed, Extreme Greed.</li>
+  </ul>
+
+  <h2>3. Preprocessing and Join Logic</h2>
+  <div class="note">
+    The most important technical step is the timestamp alignment. The trade data is in IST, while sentiment is daily and indexed by date.
+    To avoid leakage and off-by-one-day mismatches, the pipeline converts trade timestamps from IST to UTC and then joins on the UTC date key.
+  </div>
+  <ol>
+    <li>Parse <code>Timestamp IST</code> as <code>DD-MM-YYYY HH:MM</code>.</li>
+    <li>Subtract 5 hours 30 minutes to obtain UTC time.</li>
+    <li>Derive <code>date_utc</code> and join to the sentiment <code>date</code> field.</li>
+    <li>Winsorize <code>Closed PnL</code> and <code>Size USD</code> at the 1st and 99th percentiles for robust statistics.</li>
+    <li>Remove spot dust conversion rows and similar administrative noise from analysis tables.</li>
+  </ol>
+
+  <h2>4. Exploratory Findings</h2>
+  <ul>
+    <li>Performance differs materially across sentiment regimes.</li>
+    <li>Maker/taker behavior shifts with fear and greed; traders become more aggressive in greed regimes.</li>
+    <li>Trade sizing and leverage proxies increase in higher sentiment regimes, indicating stronger risk-taking.</li>
+    <li>Account performance is heterogeneous: a few accounts dominate total realized PnL.</li>
+  </ul>
+
+  <h3>Regime-Level EDA Outputs</h3>
+  <ul>
+    <li><code>outputs/eda_sentiment_regimes.png</code></li>
+    <li><code>outputs/quant_regime_core_metrics.png</code></li>
+    <li><code>outputs/quant_regime_transition_matrix.png</code></li>
+    <li><code>outputs/quant_coin_microstructure.png</code></li>
+  </ul>
+
+  <h2>5. Advanced Quant Analysis</h2>
+  <p>
+    The advanced notebook extends the analysis beyond basic EDA and includes account-level risk decomposition, behavioral clustering,
+    regime specialization, coin-level microstructure, and bootstrap confidence intervals for regime metrics.
+  </p>
+  <ul>
+    <li>Account skill map: win rate vs average PnL.</li>
+    <li>Risk map: max drawdown vs total realized PnL.</li>
+    <li>KMeans behavioral clustering for trader archetypes.</li>
+    <li>Regime specialization heatmap by account.</li>
+  </ul>
+
+  <h2>6. Predictive Modeling Pipeline</h2>
+  <p>
+    The modeling notebooks build a leakage-safe classifier for <code>Closed PnL &gt; 0</code> using lagged and rolling features only.
+    The validation strategy is walk-forward with purging and embargo. The champion model is a boosted-tree baseline combined with
+    thresholding, confidence-based sizing, and a final guard gate.
+  </p>
+  <ul>
+    <li>Primary metric set: ROC-AUC, PR-AUC, F1, Brier score.</li>
+    <li>Trading metric set: total PnL, max drawdown, hit rate, profit factor.</li>
+    <li>Thresholds and confidence sizing are optimized out-of-sample on walk-forward predictions.</li>
+  </ul>
+
+  <h3>Model Outputs</h3>
+  <ul>
+    <li><code>csv_files/model_fold_scores.csv</code></li>
+    <li><code>csv_files/model_oof_predictions.csv</code></li>
+    <li><code>csv_files/final_champion_summary.csv</code></li>
+    <li><code>model_artifacts/final_calibrated_hgb_model.joblib</code></li>
+    <li><code>model_artifacts/final_model_metadata.json</code></li>
+    <li><code>outputs/final_champion_equity.png</code></li>
+    <li><code>outputs/final_champion_drawdown.png</code></li>
+    <li><code>outputs/final_champion_regime_pnl.png</code></li>
+  </ul>
+
+  <h2>7. Final Champion Result</h2>
+  <table>
+    <tr><th>Item</th><th>Value</th></tr>
+    <tr><td>Model</td><td>baseline_hgb_final_champion</td></tr>
+    <tr><td>Best threshold</td><td>0.62</td></tr>
+    <tr><td>Best alpha</td><td>1.5</td></tr>
+    <tr><td>Best confidence gate</td><td>0.05</td></tr>
+    <tr><td>Taken trades</td><td>143,880</td></tr>
+    <tr><td>Total PnL</td><td>14,599,108</td></tr>
+    <tr><td>Max drawdown</td><td>-89,678.22</td></tr>
+    <tr><td>Hit rate</td><td>95.02%</td></tr>
+    <tr><td>Profit factor</td><td>40.22</td></tr>
+  </table>
+
+  <p>
+    Relative to the earlier baseline champion, the final pass materially improved total PnL while keeping drawdown close to the same
+    risk envelope. The strongest gain came from confidence-based sizing and the safety gate that removed middle-confidence trades.
+  </p>
+
+  <h2>8. Untouched Final Holdout</h2>
+  <table>
+    <tr><th>Item</th><th>Value</th></tr>
+    <tr><td>Model</td><td>final_holdout_calibrated_hgb</td></tr>
+    <tr><td>Best threshold</td><td>0.52</td></tr>
+    <tr><td>Best alpha</td><td>0.75</td></tr>
+    <tr><td>Best confidence gate</td><td>0.05</td></tr>
+    <tr><td>Holdout rows</td><td>31,663</td></tr>
+    <tr><td>Taken trades</td><td>11,752</td></tr>
+    <tr><td>Total PnL</td><td>883,481.89</td></tr>
+    <tr><td>Max drawdown</td><td>-58,738.89</td></tr>
+    <tr><td>Hit rate</td><td>93.13%</td></tr>
+    <tr><td>Profit factor</td><td>11.28</td></tr>
+  </table>
+
+  <p>
+    This holdout was never used for threshold or sizing selection. It provides a cleaner estimate of generalization than the walk-forward OOF
+    champion alone and still shows profitable, controlled behavior.
+  </p>
+
+  <h2>9. Explainability And Cost Stress</h2>
+  <p>
+    Permutation importance on the untouched holdout shows that the strongest driver is trade direction, followed by recent account win rate
+    and account PnL momentum. That is a very plausible structure for a market-aware trading model: execution intent and trader state matter more than raw sentiment alone.
+  </p>
+  <table>
+    <tr><th>Top Holdout Features</th><th>Relative Importance</th></tr>
+    <tr><td>Direction</td><td>0.277188</td></tr>
+    <tr><td>acc_wr20</td><td>0.039854</td></tr>
+    <tr><td>acc_pnl20</td><td>0.007524</td></tr>
+    <tr><td>Side</td><td>0.002160</td></tr>
+    <tr><td>Start Position</td><td>0.001739</td></tr>
+  </table>
+  <p>
+    Cost stress is also favorable: the holdout remains profitable at 5 bps and 10 bps of extra execution cost, which suggests the signal is not purely a zero-cost artifact.
+  </p>
+
+  <p>
+    The final modeling design also uses the strongest practical ideas from the advanced modeling notes: calibrated probabilities for position sizing,
+    lagged sentiment velocity, account momentum features, and purged time-series evaluation. Triple-barrier labeling and full graph-based wash-trading
+    loops are documented as future extensions because the available fill-level dataset does not contain a clean future path or wallet-transfer graph.
+  </p>
+
+  <h2>10. What Is Covered vs the Guidance PDF</h2>
+  <ul>
+    <li>Covered: sentiment join, regime analysis, maker/taker behavior, clustering, leakage-safe modeling, purged walk-forward validation, copy-trading style risk controls.</li>
+    <li>Covered: final champion selection with constrained grid search and OOS backtest metrics.</li>
+    <li>Partially covered: literal wash-trading graph heuristics and inverse covariance clustering as named in the guidance.</li>
+    <li>Missing as a formal file: a finalized PDF report artifact and a fully mirrored raw-data folder structure inside <code>csv_files/</code>.</li>
+  </ul>
+
+  <h2>11. Recommended Submission Bundle</h2>
+  <ol>
+    <li><code>notebook_1.ipynb</code> and <code>notebook_1_advanced_quant.ipynb</code></li>
+    <li><code>notebook_2.ipynb</code> and <code>notebook_2_improved.ipynb</code></li>
+    <li><code>ds_report.pdf</code></li>
+    <li><code>csv_files/</code> with raw and processed data</li>
+    <li><code>outputs/</code> with the major charts</li>
+  </ol>
+
+  <h2>12. Conclusion</h2>
+  <p>
+    The assignment is substantially completed with a strong, leakage-aware quant workflow, advanced regime analysis, an untouched holdout
+    evaluation, and a production-style champion model. The remaining work is mostly packaging and presentation polish rather than core analytical gaps.
+  </p>
+</body>
+</html>

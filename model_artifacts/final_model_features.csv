@@ -1,0 +1,55 @@
+feature
+Execution Price
+Size Tokens
+Size USD
+Start Position
+Fee
+fg_value
+sent_regime_ord
+size_usd_log
+fee_abs_log
+exec_price_log
+hour
+dow
+month
+acc_wr5
+acc_wr10
+acc_wr20
+acc_wr50
+acc_wr100
+acc_pnl_mean_10
+acc_pnl_std_10
+acc_pnl_velocity_10
+acc_pnl_mean_20
+acc_pnl_std_20
+acc_pnl_velocity_20
+acc_pnl_mean_50
+acc_pnl_std_50
+acc_pnl_velocity_50
+acc_size_mean_10
+acc_size_mean_20
+acc_size_mean_50
+acc_taker_rate_10
+acc_taker_rate_20
+acc_taker_rate_50
+acc_streak
+coin_wr30
+coin_pnl30
+coin_taker_rate_30
+fg_l1
+fg_l3
+fg_l7
+fg_d1
+fg_d3
+fg_r7m
+fg_r7s
+sent_x_taker
+sent_x_accwr
+sent_x_accsize
+sent_x_coinwr
+size_x_sent
+Account
+Coin
+Side
+Direction
+fg_classification

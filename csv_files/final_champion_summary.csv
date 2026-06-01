@@ -1,0 +1,2 @@
+model,best_threshold,best_alpha,best_gate,taken_trades,total_pnl,max_drawdown,hit_rate,profit_factor,min_allowed_drawdown,baseline_total_pnl,baseline_max_drawdown
+baseline_hgb_final_champion,0.62,1.5,0.05,143880,14599114.585305452,-89678.21843071282,0.950201556852933,40.22156559490591,-89739.80434860215,9610083.722477,-85466.48033200204

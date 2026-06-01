@@ -1,0 +1,2 @@
+model,best_threshold,best_alpha,best_gate,taken_trades,total_pnl,max_drawdown,hit_rate,profit_factor
+hgb_regime_expert_nested_guarded,0.38,1.0,0.01,76096,8146845.1771641765,-125832.8642567182,0.9166973296888141,14.365849480622586
